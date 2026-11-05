@@ -1,0 +1,199 @@
+:root {
+  --bg: #f3efe8;
+  --green: #2f5e3a;
+  --green-dark: #24492d;
+  --orange: #db8429;
+  --card: #faf8f4;
+  --card-head: #e6e9e1;
+  --line: #d6d3cb;
+  --value-bg: #e6e8db;
+  --value-line: #cfd2c3;
+  --text: #2b2b2b;
+  --label: #4f5a51;
+  --muted: #7a7a72;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 28px 16px 56px;
+}
+
+/* 標題列 */
+.banner {
+  background: var(--green);
+  border-radius: 22px;
+  box-shadow: 0 8px 0 var(--orange);
+  padding: 22px 36px;
+  margin-bottom: 36px;
+}
+.banner h1 {
+  margin: 0;
+  color: #fbf6ea;
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+/* 卡片 */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+.card-title {
+  margin: 0;
+  background: var(--card-head);
+  border-left: 10px solid var(--orange);
+  color: var(--green-dark);
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 16px 30px;
+  letter-spacing: .05em;
+}
+.card-body { padding: 18px 30px 26px; }
+
+/* 每一列：左標籤、右欄位 */
+.row {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  align-items: center;
+  gap: 16px;
+  margin: 14px 0;
+}
+.row > label,
+.row > .label {
+  color: var(--label);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  font-size: 1.15rem;
+  color: var(--text);
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23333' stroke-width='1.8'/%3E%3C/svg%3E") no-repeat right 16px center;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px 44px 16px 30px;
+  cursor: pointer;
+}
+select:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px var(--card), 0 0 0 4px var(--green);
+}
+optgroup { font-weight: 700; color: var(--green-dark); }
+option { color: var(--text); font-weight: 400; }
+
+.value-box {
+  display: block;
+  background: var(--value-bg);
+  border: 1px solid var(--value-line);
+  border-radius: 10px;
+  padding: 16px 24px;
+  min-height: 60px;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--green-dark);
+}
+.value-box.is-default {
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+/* 機器 + 圖片 */
+.machine-wrap {
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  align-items: center;
+  gap: 16px;
+}
+.machine-figure {
+  margin: 0;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 8px;
+  text-align: center;
+}
+.machine-figure img {
+  display: block;
+  width: 100%;
+  height: 170px;
+  object-fit: contain;
+}
+.machine-figure figcaption {
+  font-size: .8rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* 試片尺寸圖 */
+.specimen {
+  margin-top: 20px;
+  border-top: 1px dashed var(--line);
+  padding-top: 14px;
+}
+.specimen summary {
+  cursor: pointer;
+  color: var(--label);
+  font-weight: 700;
+}
+#specimen-svg {
+  display: block;
+  width: 100%;
+  max-width: 620px;
+  margin: 12px auto 0;
+  color: #555;
+}
+#specimen-svg .shape { fill: #fff; stroke: #333; stroke-width: 2; }
+#specimen-svg .dim line { stroke: currentColor; stroke-width: 1.6; }
+#specimen-svg .dim .ext { stroke-width: 1; }
+#specimen-svg .dim text {
+  fill: currentColor;
+  font: 700 20px "JetBrains Mono", Consolas, monospace;
+}
+#specimen-svg .dim.active { color: var(--orange); }
+#specimen-svg .dim.active line { stroke-width: 2.4; }
+
+/* 說明 */
+.notes {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px 22px;
+  min-height: 160px;
+  color: var(--text);
+}
+.notes > :first-child { margin-top: 0; }
+.notes > :last-child { margin-bottom: 0; }
+
+/* 手機 */
+@media (max-width: 720px) {
+  .banner { padding: 18px 22px; margin-bottom: 28px; }
+  .card-title { padding: 14px 18px; }
+  .card-body { padding: 12px 16px 20px; }
+  .row { grid-template-columns: 1fr; gap: 6px; }
+  select { padding: 12px 40px 12px 16px; }
+  .value-box { padding: 12px 16px; min-height: 0; }
+  .machine-wrap { grid-template-columns: 1fr 96px; gap: 10px; }
+  .machine-figure img { height: 110px; }
+}
